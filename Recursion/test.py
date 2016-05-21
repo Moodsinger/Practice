@@ -1,21 +1,14 @@
 #!/usr/bin/env python2
 
-def Func(l, *args, **kwargs):
-    for i in l:
-        if type(i) != list:
-            print i
-        else:
-            for j in i:
-                print j
-
-def FuncDispather(l, *args, **kwargs):
-    a = 0
-    size = len(l)
-    while(a<size-1):
-        Func(l)
-    print()
+def RecursiveListWithinListPrinter(*args, **kwargs):
+    for outerList in list(args)+list(kwargs.items()):
+        if type(outerList) == list:
+            for innerList in outerList:
+                if type(innerList) == list:
+                    RecursiveListWithinListPrinter(innerList)
+                else:
+                    print(innerList)
 
 
-
-
-Func([1,[2,3], [4,5]])
+l = [1,2,3,4,5]
+RecursiveListWithinListPrinter(l)
