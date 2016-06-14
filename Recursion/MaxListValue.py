@@ -19,7 +19,10 @@
 #     print(maxVal)
 #
 # MVO([1,3,2])
+# I was pretty close to the answer...
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# ANSWER:
 def Max(list):
     if len(list) == 1:
         return list[0]
