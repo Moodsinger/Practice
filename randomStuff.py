@@ -16,13 +16,13 @@
 class Mapping(object):
     def __init__(self, blockedCells, gridX, gridY, *args, **kwargs):
         self.wholeMap = []                                      # A list to store every (X,Y) coordinate in a tuple
-    @classmethod                                                # So it'll be tuples inside of lists
+                                                                # So it'll be tuples inside of lists
     def MapWholeMap(self, *args, **kwargs):                     # This will just go through the two coordinates and map them
         for i in xrange(gridX):
             for j in xrange(gridY):
                 self.wholeMap.append((gridX, gridY))
         return self.wholeMap
-    @classmethod
+
     def RemoveBlockedCells(self):                               # This will remove any cells that are blocked, i.e, you cannot
         if type(blockedCells) == list:                          # Go on them
             for blockedCell in blockedCells:
@@ -35,7 +35,7 @@ class Find(object):
         self.currentCell = tuple(currentCell)                   # This is pretty simple, just make sure that it's a tuple
         self.goal = tuple(goal)                                 # The list will store [x,y]
 
-    @classmethod
+
     def GenChildren(self, *args, **kwargs):
         testingCell = [currentCell]                             # Here, change X, Y coordinates and see which neighbouring cell is the
         try:                                                    # closest
@@ -44,18 +44,27 @@ class Find(object):
             pass
 
         return listOfChildren
-    @classmethod
-    def getHeursitic(self):
+
+    def getHeursitic(self, tempCurCell=0):
         '''
             Get heuristics for X, Y and then store them in a tuple
         '''
-        self.heuristicX = abs(self.goal[0] - self.currentCell[0])
-        self.heuristicY = abs(self.goal[1] - self.currentCell[1])
-        self.heuristic = (self.heuristicX, self.heuristicY)
-        return self.heuristic
-    @classmethod
+        try:
+            self.heuristicX = abs(self.goal[0] - self.tempCurCell[0])
+            self.heuristicY = abs(self.goal[1] - self.tempCurCell[1])
+            self.heuristic = (self.heuristicX, self.heuristicY)
+            return self.heuristic
+
+        except:
+            self.heuristicX = abs(self.goal[0] - self.currentCell[0])
+            self.heuristicY = abs(self.goal[1] - self.currentCell[1])
+            self.heuristic = (self.heuristicX, self.heuristicY)
+            return self.heuristic
+
+
     def FindPath(self):
         self.priorityDict = {int(priority):self.currentCell}
 
+
 x = Find((1,1), (5,5))
-x.getHeursitic()
+print(x.getHeursitic())
