@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+    #!/usr/bin/env python
 
 # class Transition(object):                                       # A transition class. Just in case we have to do
 #     def __init__(self, toState, *args, **kwargs):               # Something when we are changing states. Like say
@@ -13,37 +13,52 @@
 #                                                                 # I'll look at what's common and put it here
 
 
-class Mapping(object):
+class Map(object):
+    '''
+        A list to store every (X,Y) coordinate in a tuple
+        So it'll be tuples inside of lists
+        This will just go through the two coordinates and map them
+    '''
     def __init__(self, blockedCells, gridX, gridY, *args, **kwargs):
-        self.wholeMap = []                                      # A list to store every (X,Y) coordinate in a tuple
-                                                                # So it'll be tuples inside of lists
-    def MapWholeMap(self, *args, **kwargs):                     # This will just go through the two coordinates and map them
+        self.wholeMap = []
+        MapWholeMap()
+        RemoveBlockedCells()                                      
+
+    def MapWholeMap(self, *args, **kwargs):
         for i in xrange(gridX):
             for j in xrange(gridY):
                 self.wholeMap.append((gridX, gridY))
         return self.wholeMap
 
-    def RemoveBlockedCells(self):                               # This will remove any cells that are blocked, i.e, you cannot
-        if type(blockedCells) == list:                          # Go on them
+    def RemoveBlockedCells(self):
+        '''
+        This will remove any cells that are blocked, i.e, you cannot
+        Go on them
+        '''
+        if type(blockedCells) == list:
             for blockedCell in blockedCells:
                 if type(blockedCell) == tuple:
                     self.wholeMap.pop(wholeMap.index[blockedCell])
 
 
 class Find(object):
+    '''
+    This is pretty simple, just make sure that it's a tuple
+    The list will store [x,y]
+    '''
     def __init__(self, currentCell, goal, *args, **kwargs):
-        self.currentCell = tuple(currentCell)                   # This is pretty simple, just make sure that it's a tuple
-        self.goal = tuple(goal)                                 # The list will store [x,y]
+        self.currentCell = tuple(currentCell)
+        self.goal = tuple(goal)
+
 
 
     def GenChildren(self, *args, **kwargs):
-        testingCell = [currentCell]                             # Here, change X, Y coordinates and see which neighbouring cell is the
-        try:                                                    # closest
-            pass
-        except:
-            pass
+        '''
+            Here, change X, Y coordinates and see which neighbouring cell is the
+            Okay, firstly, a simple method to get children
 
-        return listOfChildren
+        '''
+        pass
 
     def getHeursitic(self, tempCurCell=0):
         '''
@@ -64,6 +79,12 @@ class Find(object):
 
     def FindPath(self):
         self.priorityDict = {int(priority):self.currentCell}
+
+if __name__ == '__main__':
+    x = input("Enter the width of the grid: ")
+    y = input("Enter the height of the grid: ")
+    blockedcells =  input("Enter all the blocked cells: ")
+    mapIt = Map(blockedcells, x, y)
 
 
 x = Find((1,1), (5,5))
