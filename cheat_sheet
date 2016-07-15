@@ -1,0 +1,7 @@
+Cheat Sheet:
+Syntax for creating metaclasses:
+
+        class C(metaclass=ABCMeta):
+            @abstractmethod
+            def my_abstract_method(self, ...):
+                ...
