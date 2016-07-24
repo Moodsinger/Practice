@@ -12,6 +12,11 @@ from singleton import Singleton
 
 
 class Node(object, metaclass=ABCMeta):
+    '''
+        The is an abstract class (i.e, can't be instanciated) because
+        this would be the base class of any node. this should only serve
+        as a base class.
+    '''
     @abstractmethod
     def __init__(self):
         self.value = None
