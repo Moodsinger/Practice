@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-def Singelton(cls):
+def Singleton(cls):
     instances = {}
     def getInstance(*args, **kwargs):
         if cls not in instances:
