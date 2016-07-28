@@ -31,7 +31,7 @@ class SubNode(Node):
         Node.__init__(self)
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Functions
-
+global nodes_at_depth;
 def GenTree(depth, base):
     '''
         Function to generate a tree structure with any give base
@@ -47,10 +47,10 @@ def GenTree(depth, base):
         return y
     else:
         nodes_lst = []
-        nodes = (depth)*base
+        nodes = (depth+1)*base
         for i in range(depth):
             nodes_lst.append(i)
-        for i in range(0, nodes):
+        for i in range(nodes):
             nodes_at_depth[str(depth)+'_instance_'+str(i)] = SubNode()
         return [GenTree(depth-1, base), nodes_at_depth]
 
@@ -64,7 +64,7 @@ print(f)
     The following line should print out the second instance of
     the second, layer maybe? But it just says key error
 '''
-# print(f[1]['2_instance_2'])
+print(f[1]['1_instance_'])
 
 def Nav(di_nodes):
     pass
