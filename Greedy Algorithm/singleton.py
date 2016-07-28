@@ -7,4 +7,3 @@ def Singleton(cls):
             instances[cls] = cls(*args, **kwargs)
         return instances[cls]
     return getInstance
-

@@ -2,7 +2,6 @@
 
 from abc import ABCMeta, abstractmethod
 from singleton import Singleton
-
 '''
     This section just has the required classes I want for this file
     It contains an abstract class called Node which should never be
@@ -29,10 +28,10 @@ class Root(Node):
 class SubNode(Node):
     def __init__(self):
         Node.__init__(self)
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Functions
-global nodes_at_depth;
-def GenTree(depth, base):
+
+def GenTree(depth = 0, base = 0):
     '''
         Function to generate a tree structure with any give base
         It will create the required number of nodes at any depth,
@@ -47,24 +46,37 @@ def GenTree(depth, base):
         return y
     else:
         nodes_lst = []
-        nodes = (depth+1)*base
+        nodes = (depth)*base
         for i in range(depth):
             nodes_lst.append(i)
         for i in range(nodes):
-            nodes_at_depth[str(depth)+'_instance_'+str(i)] = SubNode()
+            nodes_at_depth[int(100*depth+(i+1))] = SubNode()
         return [GenTree(depth-1, base), nodes_at_depth]
 
-f = GenTree(2,2)
-'''
-    From the following statement I do get a bunch of Instances of
-    SubNode() but not the way I want them to generate
-'''
-print(f)
-'''
-    The following line should print out the second instance of
-    the second, layer maybe? But it just says key error
-'''
-print(f[1]['1_instance_'])
+def Nav(di_nodes, depth = 0, base = 0):
+    '''
+        I'm just going to do it for a binary tree, and then move it to a general sense
+    '''
+    path = []
+    if type(di_nodes) == dict:
+        for key, value in di_nodes.items():
+            if(di_nodes[key+100]) > (di_nodes[key+101]):
+                path.append(di_nodes[key+100])
+            else:
+                path.append(di_nodes[key+101])
+        return path
+    else:
+        print("Dude, that wasn't a dictionary")
+        return 1
 
-def Nav(di_nodes):
-    pass
+def summation(lst):
+    total = 0
+    for i in lst:
+        total += i
+
+if __name__ == "__main__":
+    depth = 3
+    base = 2
+    tree = GenTree(depth, base)
+    final_path = Nav(tree[1], depth, base)
+    summation(final_path)
