@@ -55,7 +55,7 @@ def GenTree(depth = 0, base = 0):
 
 def Nav(di_nodes, depth = 0, base = 0):
     '''
-        I'm just going to do it for a binary tree, and then move it to a general sense
+        I'm just going to do it for a binary tree, and then make a general method
     '''
     path = []
     if type(di_nodes) == dict:
