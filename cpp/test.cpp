@@ -1,12 +1,11 @@
 #include <iostream>
 using namespace std;
 
-int fact(int x) {
-
-  return fact(x-1);
-}
-
 int main(int argc, char const *argv[]) {
-  cout << fact(5) << endl;
+  cout << "Ham Sandwich\n";
+  char x;
+  cout << "Enter a string please: ";
+  cin << x;
+  cout << "You entered " + char(x) + " right?" << endl;
   return 0;
 }

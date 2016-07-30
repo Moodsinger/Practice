@@ -28,7 +28,7 @@ class Root(Node):
 class SubNode(Node):
     def __init__(self):
         Node.__init__(self)
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Functions
 
 def GenTree(depth = 0, base = 0):
@@ -53,6 +53,21 @@ def GenTree(depth = 0, base = 0):
             nodes_at_depth[int(100*depth+(i+1))] = SubNode()
         return [GenTree(depth-1, base), nodes_at_depth]
 
+def map_values(di_nodes, lst_values):
+    '''
+        This code feels like it's really bad...
+        especially the else statement...
+    '''
+    if type(di_nodes) == dict:
+        if len(lst_values) == len(di_nodes):
+            for key, value in di_nodes:
+                map(lst_values, di_nodes[key].value)
+        else:
+            new_lst_values = lst_values[:int(len(di_nodes))-1]
+            for key, value in di_nodes:
+                map(lst_values, di_nodes[key].value)
+    return di_nodes
+
 def Nav(di_nodes, depth = 0, base = 0):
     '''
         I'm just going to do it for a binary tree, and then make a general method
@@ -60,10 +75,13 @@ def Nav(di_nodes, depth = 0, base = 0):
     path = []
     if type(di_nodes) == dict:
         for key, value in di_nodes.items():
-            if(di_nodes[key+100]) > (di_nodes[key+101]):
-                path.append(di_nodes[key+100])
-            else:
-                path.append(di_nodes[key+101])
+            try:
+                if(di_nodes[key+100].value) > (di_nodes[key+101].value):
+                    path.append(di_nodes[key+100])
+                else:
+                    path.append(di_nodes[key+101])
+            except:
+                print("Excpetion handling is awesome!")
         return path
     else:
         print("Dude, that wasn't a dictionary")
@@ -73,10 +91,14 @@ def summation(lst):
     total = 0
     for i in lst:
         total += i
+    return total
 
 if __name__ == "__main__":
     depth = 3
     base = 2
     tree = GenTree(depth, base)
+    lst_values = [1,2,3,4,5,6,7,6,5,4,3,2,1]
+    map_values_instance = map_values(tree[1], lst_values)
     final_path = Nav(tree[1], depth, base)
-    summation(final_path)
+    print(final_path)
+    print(summation(final_path))
