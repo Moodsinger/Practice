@@ -1,7 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from abc import ABCMeta, abstractmethod
-from singleton import Singleton
+#from singleton import Singleton
 '''
     This section just has the required classes I want for this file
     It contains an abstract class called Node which should never be
@@ -9,13 +9,20 @@ from singleton import Singleton
     won't tell if any given node is a Root Node or a Sub-Node.
 '''
 
+def Singleton(cls):
+    _instances = {}
+    def getInstance(*args, **kwargs):
+        instances[cls] = cls(*args, **kwargs)
+        return instances[cls]
+        return getInstance
 
-class Node(object, metaclass=ABCMeta):
+class Node(object):
     '''
         The is an abstract class (i.e, can't be instanciated) because
         this would be the base class of any node. this should only serve
         as a base class.
     '''
+    __metaclass__ = ABCMeta
     @abstractmethod
     def __init__(self):
         self.value = None
@@ -28,7 +35,7 @@ class Root(Node):
 class SubNode(Node):
     def __init__(self):
         Node.__init__(self)
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Functions
 
 def GenTree(depth = 0, base = 0):
@@ -63,9 +70,11 @@ def map_values(di_nodes, lst_values):
             for key, value in di_nodes:
                 map(lst_values, di_nodes[key].value)
         else:
+            print(type(di_nodes))
+            print(di_nodes)
             new_lst_values = lst_values[:int(len(di_nodes))-1]
             for key, value in di_nodes:
-                map(lst_values, di_nodes[key].value)
+                map(new_lst_values, di_nodes[key].value)
     return di_nodes
 
 def Nav(di_nodes, depth = 0, base = 0):

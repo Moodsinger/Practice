@@ -1,11 +1,11 @@
 #include <iostream>
 using namespace std;
 
-int main(int argc, char const *argv[]) {
-  cout << "Ham Sandwich\n";
-  char x;
-  cout << "Enter a string please: ";
-  cin << x;
-  cout << "You entered " + char(x) + " right?" << endl;
-  return 0;
+int Fact(int x) {
+	if(x==0||x==1) {
+		return 1;
+	}
+	else {
+		return x*Fact(x-1);
+	}
 }

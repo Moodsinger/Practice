@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from abc import ABCMeta, abstractmethod
 from singleton import Singleton
@@ -10,12 +10,13 @@ from singleton import Singleton
 '''
 
 
-class Node(object, metaclass=ABCMeta):
+class Node(object):
     '''
         The is an abstract class (i.e, can't be instanciated) because
         this would be the base class of any node. this should only serve
         as a base class.
     '''
+    __metaclass__ = ABCMeta
     @abstractmethod
     def __init__(self):
         self.value = None
@@ -60,12 +61,12 @@ def map_values(di_nodes, lst_values):
     '''
     if type(di_nodes) == dict:
         if len(lst_values) == len(di_nodes):
-            for key, value in di_nodes:
-                map(lst_values, di_nodes[key].value)
-        else:
-            new_lst_values = lst_values[:int(len(di_nodes))-1]
-            for key, value in di_nodes:
-                map(lst_values, di_nodes[key].value)
+            if type(di_nodes) == dict:
+                print(type(di_nodes))
+                new_lst_values = lst_values[:int(len(di_nodes))-1]
+                for key, value in di_nodes:
+                    value.Value = lst_values[int(str(key)[-1]-1)]
+                    di_nodes[key] = value.Value
     return di_nodes
 
 def Nav(di_nodes, depth = 0, base = 0):
@@ -75,13 +76,10 @@ def Nav(di_nodes, depth = 0, base = 0):
     path = []
     if type(di_nodes) == dict:
         for key, value in di_nodes.items():
-            try:
-                if(di_nodes[key+100].value) > (di_nodes[key+101].value):
-                    path.append(di_nodes[key+100])
-                else:
-                    path.append(di_nodes[key+101])
-            except:
-                print("Excpetion handling is awesome!")
+            if(di_nodes[key+100].value) > (di_nodes[key+101].value):
+                path.append(di_nodes[key+100])
+            else:
+                path.append(di_nodes[key+101])
         return path
     else:
         print("Dude, that wasn't a dictionary")
@@ -97,6 +95,7 @@ if __name__ == "__main__":
     depth = 3
     base = 2
     tree = GenTree(depth, base)
+    print(tree[0])
     lst_values = [1,2,3,4,5,6,7,6,5,4,3,2,1]
     map_values_instance = map_values(tree[1], lst_values)
     final_path = Nav(tree[1], depth, base)

@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import re
+
 def FirstReverse(_str):
     return _str[::-1]
 print(FirstReverse('word'))
@@ -13,16 +15,17 @@ def FirstFactorial(num):
 print(FirstFactorial(8))
 
 def LongestWord(sen):
-
+    new_lst = []
     x = sen.split()
     longest = 'didn\'t work'
     if type(x) == list:
         try:
             for i in range(len(x)):
-                if len(x[i]) >= len(x[i+1]):
-                    longest = x[i]
+                new_lst.append(re.sub(r'a-zA-Z', x[i]))
+                if len(new_lst[i]) >= len(new_lst[i+1]):
+                    longest = new_lst[i]
                 else:
-                    longest = x[i+1]
+                    longest = new_lst[i+1]
         except:
             pass
     return longest
