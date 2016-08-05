@@ -76,10 +76,13 @@ def Nav(di_nodes, depth = 0, base = 0):
     path = []
     if type(di_nodes) == dict:
         for key, value in di_nodes.items():
-            if(di_nodes[key+100].value) > (di_nodes[key+101].value):
-                path.append(di_nodes[key+100])
-            else:
-                path.append(di_nodes[key+101])
+            try:
+                if(di_nodes[key+100].value) > (di_nodes[key+101].value):
+                    path.append(di_nodes[key+100])
+                else:
+                    path.append(di_nodes[key+101])
+            except KeyError:
+                print("Another key error :(")
         return path
     else:
         print("Dude, that wasn't a dictionary")

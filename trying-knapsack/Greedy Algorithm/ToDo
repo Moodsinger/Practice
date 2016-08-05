@@ -1,5 +1,5 @@
 Okay, so here's a list of stuff that I have to implement
 
-1. Add a method to allocate values to nodes in our tree structure
+1. Add a method to allocate values to nodes in our tree structure (that works..)
 2. Then add a method to see the value of each node and then basically..
-   Do what the algorithm is meant to do...
+   Do what the algorithm is meant to do.. [Well, somehow I managed to do that first..]
