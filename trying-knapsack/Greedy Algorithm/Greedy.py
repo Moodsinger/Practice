@@ -32,7 +32,7 @@ class SubNode(Node):
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Functions
 
-def GenTree(depth = 0, base = 0):
+def GenTree(depth , base):
     '''
         Function to generate a tree structure with any give base
         It will create the required number of nodes at any depth,
@@ -46,12 +46,9 @@ def GenTree(depth = 0, base = 0):
         y = Root()
         return y
     else:
-        nodes_lst = []
         nodes = (depth)*base
-        for i in range(depth):
-            nodes_lst.append(i)
         for i in range(nodes):
-            nodes_at_depth[int(100*depth+(i+1))] = SubNode()
+            nodes_at_depth[int(100*depth+(i))] = SubNode()
         return [GenTree(depth-1, base), nodes_at_depth]
 
 def map_values(di_nodes, lst_values):
@@ -95,7 +92,7 @@ def summation(lst):
     return total
 
 if __name__ == "__main__":
-    depth = 3
+    depth = 5
     base = 2
     tree = GenTree(depth, base)
     print(tree[0])
