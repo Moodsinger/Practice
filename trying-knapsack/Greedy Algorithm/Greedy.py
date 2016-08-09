@@ -95,9 +95,11 @@ if __name__ == "__main__":
     depth = 5
     base = 2
     tree = GenTree(depth, base)
-    print(tree[0])
-    lst_values = [1,2,3,4,5,6,7,6,5,4,3,2,1]
-    map_values_instance = map_values(tree[1], lst_values)
-    final_path = Nav(tree[1], depth, base)
-    print(final_path)
-    print(summation(final_path))
+    print(tree)
+    # lst_values = [1,2,3,4,5,6,7,6,5,4,3,2,1]
+    # map_values_instance = map_values(tree[1], lst_values)
+    # final_path = Nav(tree[1], depth, base)
+    #print(final_path)
+    #print(summation(final_path))
+    import re
+    print(re.)
