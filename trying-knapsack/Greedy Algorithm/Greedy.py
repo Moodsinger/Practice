@@ -79,7 +79,9 @@ def Nav(di_nodes, depth = 0, base = 0):
                 else:
                     path.append(di_nodes[key+101])
             except KeyError:
-                print("Another key error :(")
+                print(key)
+                print(key+100)
+                print(key+101)
         return path
     else:
         print("Dude, that wasn't a dictionary")
@@ -92,14 +94,13 @@ def summation(lst):
     return total
 
 if __name__ == "__main__":
-    depth = 5
+    depth = 2
     base = 2
     tree = GenTree(depth, base)
     print(tree)
-    # lst_values = [1,2,3,4,5,6,7,6,5,4,3,2,1]
-    # map_values_instance = map_values(tree[1], lst_values)
-    # final_path = Nav(tree[1], depth, base)
-    #print(final_path)
-    #print(summation(final_path))
-    import re
-    print(re.)
+    lst_values = [1,2,3,4,5,6,7,6,5,4,3,2,1]
+    map_values_instance = map_values(tree[1], lst_values)
+    final_path = Nav(tree[1], depth, base)
+    print(final_path)
+    print(summation(final_path))
+    input("Press enter")
