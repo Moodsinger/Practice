@@ -66,22 +66,27 @@ def map_values(di_nodes, lst_values):
                     di_nodes[key] = value.Value
     return di_nodes
 
-def Nav(di_nodes, depth = 0, base = 0):
+# I should really get to debugging this..
+def Nav(di_nodes):
     '''
         I'm just going to do it for a binary tree, and then make a general method
+        Okay. Pick off from here next time:
+        Apparently, each set of subnodes have their own dictionary..
+        how the fuck did I manage that?
     '''
     path = []
     if type(di_nodes) == dict:
         for key, value in di_nodes.items():
-            try:
-                if(di_nodes[key+100].value) > (di_nodes[key+101].value):
-                    path.append(di_nodes[key+100])
-                else:
-                    path.append(di_nodes[key+101])
-            except KeyError:
-                print(key)
-                print(key+100)
-                print(key+101)
+            if int(key) % 2 == 0:
+                try:
+                    if(di_nodes[key+100]) > (di_nodes[key+101]):
+                        path.append(di_nodes[key+100])
+                    else:
+                        path.append(di_nodes[key+101])
+                except KeyError:
+                    print(key)
+            else:
+                int(key)+1
         return path
     else:
         print("Dude, that wasn't a dictionary")
@@ -100,7 +105,7 @@ if __name__ == "__main__":
     print(tree)
     lst_values = [1,2,3,4,5,6,7,6,5,4,3,2,1]
     map_values_instance = map_values(tree[1], lst_values)
-    final_path = Nav(tree[1], depth, base)
+    final_path = Nav(tree[1])
     print(final_path)
     print(summation(final_path))
     input("Press enter")

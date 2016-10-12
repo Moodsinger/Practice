@@ -12,7 +12,7 @@
 #         pass                                                    # It's empty because in the end, when I'm cleaning it up,
 #                                                                 # I'll look at what's common and put it here
 
-
+# DATE:
 class Map(object):
     '''
         A list to store every (X,Y) coordinate in a tuple
@@ -22,7 +22,7 @@ class Map(object):
     def __init__(self, blockedCells, gridX, gridY, *args, **kwargs):
         self.wholeMap = []
         MapWholeMap()
-        RemoveBlockedCells()                                      
+        RemoveBlockedCells()
 
     def MapWholeMap(self, *args, **kwargs):
         for i in xrange(gridX):
@@ -81,9 +81,11 @@ class Find(object):
         self.priorityDict = {int(priority):self.currentCell}
 
 if __name__ == '__main__':
-    x = input("Enter the width of the grid: ")
-    y = input("Enter the height of the grid: ")
-    blockedcells =  input("Enter all the blocked cells: ")
+    # what the hell did I do here?
+    # Was I high?
+    x = 5
+    y = 5
+    blockedcells =  [(1,1)]
     mapIt = Map(blockedcells, x, y)
 
 
