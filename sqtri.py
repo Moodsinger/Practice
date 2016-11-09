@@ -19,8 +19,16 @@ def sqtri():
         return lst_numbers
     else:
         return 1
+'''
+    NEW GOAL: Find the pattern in the result... FIND IT!
+'''
+
 
 def patternTesting(lst_num):
+    '''
+        Test one, get the list of consecutive sqtri numbers whose, get ready for this,
+        absolute difference squared is a sqtri number
+    '''
     x = []
     if type(lst_num) == list:
         for i in range(len(lst_num)):
@@ -34,16 +42,31 @@ def patternTesting(lst_num):
                     pass
                 return x
             else:
+                print("How was that not a list?")
                 return 1
     else:
-        print("How was that not a list?")
         print(type(lst_num))
     return x
 
 # Write a method to see if this is a Geometric Series or not
 
 def chkGeoSeries(listofnumbers):
-    pass
+    lst_bool = []
+    indicies_out_of_range = []
+    for number in len(listofnumbers):
+        ind = number -1
+        try:
+            if (listofnumbers[ind+1]/listofnumbers[ind]) == (listofnumbers[ind+2]/listofnumbers[ind+1])
+                list_bool.append(True)
+            else:
+                list_bool.append[False]
+        except KeyError:
+            indicies_out_of_range.append(ind)
+    if False in lst_bool:
+        return 0
+    else:
+        return 1
+
 
 a = sqtri()
 b = patternTesting(a)

@@ -29,7 +29,7 @@ class Root(Node):
 class SubNode(Node):
     def __init__(self):
         Node.__init__(self)
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Functions
 
 def GenTree(depth , base):
