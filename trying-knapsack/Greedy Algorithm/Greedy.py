@@ -2,6 +2,8 @@
 
 from abc import ABCMeta, abstractmethod
 from singleton import Singleton
+from dis import dis
+from ListWithinListPrinter import *
 '''
     This section just has the required classes I want for this file
     It contains an abstract class called Node which should never be
@@ -99,7 +101,7 @@ def summation(lst):
     return total
 
 if __name__ == "__main__":
-    depth = 2
+    depth = 5
     base = 2
     tree = GenTree(depth, base)
     print(tree)
@@ -108,4 +110,6 @@ if __name__ == "__main__":
     final_path = Nav(tree[1])
     print(final_path)
     print(summation(final_path))
+    #dis(GenTree)
+    RecursiveListWithinListPrinter(tree)
     input("Press enter")
